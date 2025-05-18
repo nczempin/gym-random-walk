@@ -2,6 +2,8 @@ import gym
 import numpy as np
 import gym_random_walk
 
+_ = gym_random_walk  # register env
+
 env = gym.make('random_walk-v0')
 
 num_episodes = 20
