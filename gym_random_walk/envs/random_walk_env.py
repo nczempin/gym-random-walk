@@ -1,6 +1,5 @@
 import gym
-from gym import error, spaces, utils
-from gym.utils import seeding
+from gym import spaces
 import numpy as np
 
 class RandomWalkEnv(gym.Env):
