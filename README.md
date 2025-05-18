@@ -2,7 +2,7 @@
 
 A minimal example of a custom environment for https://github.com/openai/gym.
 
-What the environment provides is not that important; this is meant to show how what you need to do to create your own environments for openai/gym.
+What the environment provides is not that important; this is meant to show what you need to do to create your own environments for openai/gym.
 
 For concreteness I used an example in the recordings of David Silver's lectures on Reinforcement Learning at UCL.
 
