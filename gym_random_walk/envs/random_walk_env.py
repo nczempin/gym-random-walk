@@ -29,6 +29,7 @@ class RandomWalkEnv(gym.Env):
     print("#self.size:",self.size)
     self.state =  np.random.randint(1,self.size-1)
     print("starting: ", self.state)
+    return np.array(self.state)
   def _render(self, mode='human', close=False):
     if close:
         return
