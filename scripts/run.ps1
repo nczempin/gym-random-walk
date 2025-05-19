@@ -1,4 +1,4 @@
-pip install -e .[dev]
+pip install -e .
 
 ruff check .
 pytest
