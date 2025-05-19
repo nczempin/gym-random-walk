@@ -11,7 +11,7 @@ num_steps_per_episode = 200
 
 collected_rewards = []
 for i in range(num_episodes):
-    s = env.reset()
+    s, _ = env.reset()
     print ("starting new episode")
     env.render()
     print ("started")
