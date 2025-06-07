@@ -35,7 +35,7 @@ class RandomWalkEnv(gym.Env):
         super().reset(seed=seed)
         if self.debug:
             print("#self.size:", self.size)
-        self.state = np.random.randint(1, self.size - 1)
+        self.state = np.random.randint(1, self.size)
         if self.debug:
             print("starting:", self.state)
         return np.array(self.state), {}
