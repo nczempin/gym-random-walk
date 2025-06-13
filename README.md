@@ -11,3 +11,11 @@ For concreteness I used an example in the recordings of David Silver's lectures 
 You start off at one of the positions A to E, you can move right or left, reaching the "+1" terminal state gives you a reward of +1, and going all the way "to the left" will give you a terminal reward of 0.
 
 Instead of calling them the above, I just made them the states 0, 1, ...6.
+
+## Installation
+
+Install the dependencies using pip:
+
+```bash
+pip install -r requirements.txt
+```
