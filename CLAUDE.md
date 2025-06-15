@@ -6,10 +6,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a minimal custom environment for OpenAI Gym implementing a one-dimensional random walk. The environment features configurable state space with terminal states at both ends, binary actions (left/right), and simple reward structure.
 
+## Requirements
+
+- Python 3.7 (recommended for compatibility with gym 0.7.4)
+- Dependencies: gym==0.7.4, numpy==1.16.6, pytest
+
 ## Commands
 
 ### Setup and Installation
 ```bash
+# Run the setup script (installs Python 3.6 if needed on Ubuntu)
+bash scripts/setup.sh
+
+# Or manually:
 # Install dependencies
 pip install -r requirements.txt
 
@@ -62,4 +71,5 @@ The `RandomWalkEnv` class implements:
 ## Testing Approach
 - Uses pytest framework
 - Tests cover environment initialization, step mechanics, terminal conditions, and reward structure
+- Includes test for README example code to ensure documentation stays accurate
 - Run `scripts/run.sh` before committing to ensure linting and tests pass
