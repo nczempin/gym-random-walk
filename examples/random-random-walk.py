@@ -2,6 +2,8 @@ import gym
 import numpy as np
 import gym_random_walk
 
+_ = gym_random_walk  # register env
+
 env = gym.make('random_walk-v0')
 
 num_episodes = 20
@@ -9,7 +11,7 @@ num_steps_per_episode = 200
 
 collected_rewards = []
 for i in range(num_episodes):
-    s = env.reset()
+    s, _ = env.reset()
     print ("starting new episode")
     env.render()
     print ("started")
