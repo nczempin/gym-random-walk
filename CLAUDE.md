@@ -73,3 +73,8 @@ The `RandomWalkEnv` class implements:
 - Tests cover environment initialization, step mechanics, terminal conditions, and reward structure
 - Includes test for README example code to ensure documentation stays accurate
 - Run `scripts/run.sh` before committing to ensure linting and tests pass
+
+## Version Management
+- All version numbers are centralized in `gym_random_walk/_version.py`
+- To update requirements.txt after changing versions: `python scripts/update_requirements.py`
+- This ensures consistency across setup.py, requirements.txt, and documentation

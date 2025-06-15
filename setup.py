@@ -1,13 +1,19 @@
 from setuptools import setup
 from setuptools import find_packages
+import os
+import sys
+
+# Add the package directory to sys.path so we can import _version
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'gym_random_walk'))
+from _version import __version__, PYTHON_REQUIRES, GYM_VERSION, NUMPY_VERSION
 
 setup(name='gym_random_walk',
-      version='0.1.1',
+      version=__version__,
       install_requires=[
-          'gym==0.7.4',
-          'numpy==1.22.0',
+          f'gym=={GYM_VERSION}',
+          f'numpy=={NUMPY_VERSION}',
       ],
-      python_requires='>=3.8,<3.9',
+      python_requires=PYTHON_REQUIRES,
       url="https://github.com/nczempin/gym-random-walk",
       packages=find_packages()
 )  
