@@ -1,50 +1,65 @@
-import gym
-from gym import spaces
+import gymnasium as gym
+from gymnasium import spaces
 import numpy as np
-from typing import Union, Optional, Dict
+from typing import Optional, Dict, Tuple, Any
 
 class RandomWalkEnv(gym.Env):
     """Simple random walk environment."""
 
-    metadata = {"render.modes": ["human"]}
+    metadata = {"render_modes": ["human"]}
 
-    def __init__(self, size=6, debug=False):
+    def __init__(self, size=6, debug=False, render_mode=None):
         super().__init__()
         self.size = size
         self.debug = debug
+        self.render_mode = render_mode
         self.action_space = spaces.Discrete(2)
         self.observation_space = spaces.Discrete(self.size + 1)
         self.state = None
 
-    def step(self, action):
+    def step(self, action) -> Tuple[np.ndarray, float, bool, bool, Dict[str, Any]]:
         reward = 0
-        done = False
+        terminated = False
+        truncated = False
+        
         if action == 0:
             self.state -= 1
         if action == 1:
             self.state += 1
+            
         if self.state >= self.size:
             reward = 1
-            done = True
+            terminated = True
         if self.state <= 0:
-            done = True
+            terminated = True
+            
         if self.debug:
             print("current state:", self.state)
-        # Return the old Gym API format (3 values)
-        return np.array(self.state), reward, done, {}
+            
+        # Render if mode is set
+        if self.render_mode == "human":
+            self.render()
+            
+        # Return the new Gymnasium API format (5 values)
+        return np.array(self.state), reward, terminated, truncated, {}
 
-    def reset(self, seed=None, options=None):
-        # For gym 0.7.4 compatibility, reset doesn't call super().reset()
+    def reset(self, seed: Optional[int] = None, options: Optional[Dict] = None) -> Tuple[np.ndarray, Dict]:
+        # Properly handle seeding in Gymnasium
+        super().reset(seed=seed)
+        
         if self.debug:
             print("#self.size:", self.size)
-        self.state = np.random.randint(1, self.size)
+            
+        # Use the environment's random number generator
+        self.state = self.np_random.integers(1, self.size)
+        
         if self.debug:
             print("starting:", self.state)
-        return np.array(self.state)
+            
+        # Return observation and info dict
+        return np.array(self.state), {}
 
-    def render(self, mode="human", close=False):
-        if close:
-            return
+    def render(self):
         if not self.debug:
             return
         print("current state:", self.state)

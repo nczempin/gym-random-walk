@@ -1,6 +1,6 @@
 # gym-random-walk
 
-A minimal example of a custom environment for [OpenAI Gym](https://github.com/openai/gym).
+A minimal example of a custom environment for [Gymnasium](https://github.com/Farama-Foundation/Gymnasium) (formerly OpenAI Gym).
 
 This environment implements a one-dimensional random walk. The states are `0, 1, ..., 6` with `0` and `6` being terminal. The starting state is chosen uniformly from `1` through `5`.
 
@@ -9,11 +9,11 @@ You can move left or right by selecting a discrete action. Reaching the rightmos
 ## Requirements
 
 - **Python 3.8-3.11** (tested with 3.8, 3.9, 3.10, 3.11)
-- **OpenAI Gym 0.7.4** (original version from 2017)
+- **Gymnasium 1.0.0** (modern fork of OpenAI Gym)
 - **NumPy 1.22.0** (minimum version to address security vulnerabilities)
 - **pytest 7.4.4** (for running tests)
 
-This project uses older versions of dependencies to maintain compatibility with the original codebase from 2017. The pinned versions are specified in `requirements.txt`.
+This project has been updated to use Gymnasium, the maintained fork of OpenAI Gym. The pinned versions are specified in `requirements.txt`.
 
 ## Installation
 
@@ -41,14 +41,15 @@ bash scripts/setup.sh
 ## Example
 
 ```python
-import gym
+import gymnasium as gym
 import gym_random_walk
 
 env = gym.make("random_walk-v0")
-state = env.reset()
+state, info = env.reset()
 done = False
 while not done:
-    state, reward, done, _ = env.step(env.action_space.sample())
+    state, reward, terminated, truncated, info = env.step(env.action_space.sample())
+    done = terminated or truncated
 ```
 
 ## Development
