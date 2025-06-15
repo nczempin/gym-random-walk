@@ -10,7 +10,7 @@ You can move left or right by selecting a discrete action. Reaching the rightmos
 
 - **Python 3.7** (tested with 3.7.17)
 - **OpenAI Gym 0.7.4** (original version from 2017)
-- **NumPy 1.16.6** (compatible with Python 3.7)
+- **NumPy 1.19.0** (minimum version to address security vulnerabilities)
 - **pytest 7.4.4** (for running tests)
 
 This project uses older versions of dependencies to maintain compatibility with the original codebase from 2017. The pinned versions are specified in `requirements.txt`.
