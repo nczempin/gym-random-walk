@@ -8,7 +8,7 @@ You can move left or right by selecting a discrete action. Reaching the rightmos
 
 ## Requirements
 
-- **Python 3.8** (required for numpy 1.22.0)
+- **Python 3.8+** (tested with 3.8, 3.9, 3.10, 3.11, 3.12)
 - **OpenAI Gym 0.7.4** (original version from 2017)
 - **NumPy 1.22.0** (minimum version to address security vulnerabilities)
 - **pytest 7.4.4** (for running tests)
