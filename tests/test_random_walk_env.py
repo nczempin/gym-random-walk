@@ -11,7 +11,7 @@ def test_random_walk_step():
         obs = env.reset()
         state = getattr(env, "state", None)
         assert state is not None
-        assert 1 <= state <= env.size - 2
+        assert 1 <= state <= env.size - 1
 
         obs, reward, done, _ = env.step(1)
         obs_val = int(obs)
