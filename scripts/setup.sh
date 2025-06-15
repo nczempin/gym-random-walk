@@ -27,74 +27,74 @@ else
     IS_DEBIAN_BASED=false
 fi
 
-# Check for Python 3.8
-echo "Checking for Python 3.8..."
-if command_exists python3.8; then
-    PYTHON_CMD=python3.8
-    echo -e "${GREEN}Found Python 3.8${NC}"
+# Check for Python 3.11
+echo "Checking for Python 3.11..."
+if command_exists python3.11; then
+    PYTHON_CMD=python3.11
+    echo -e "${GREEN}Found Python 3.11${NC}"
 elif command_exists python3; then
-    # Check if it's 3.8.x
+    # Check if it's 3.11.x
     PYTHON_VERSION=$(python3 --version 2>&1 | awk '{print $2}')
-    if [[ $PYTHON_VERSION == 3.8.* ]]; then
+    if [[ $PYTHON_VERSION == 3.11.* ]]; then
         PYTHON_CMD=python3
         echo -e "${GREEN}Found Python $PYTHON_VERSION${NC}"
     else
         echo -e "${YELLOW}Python 3 found but version is $PYTHON_VERSION${NC}"
-        echo -e "${YELLOW}This project requires Python 3.8 for security updates${NC}"
+        echo -e "${YELLOW}This project recommends Python 3.11${NC}"
         
         if [ "$IS_DEBIAN_BASED" = true ]; then
-            echo "Installing Python 3.8..."
+            echo "Installing Python 3.11..."
             sudo apt-get update
             # Add deadsnakes PPA for Python versions
             sudo apt-get install -y software-properties-common
             sudo add-apt-repository -y ppa:deadsnakes/ppa
             sudo apt-get update
-            sudo apt-get install -y python3.8 python3.8-venv python3.8-dev
-            PYTHON_CMD=python3.8
+            sudo apt-get install -y python3.11 python3.11-venv python3.11-dev
+            PYTHON_CMD=python3.11
         else
-            echo -e "${RED}Please install Python 3.8 manually and run this script again.${NC}"
-            echo -e "${RED}This project requires Python 3.8 for numpy 1.22.0 compatibility${NC}"
+            echo -e "${RED}Please install Python 3.11 manually and run this script again.${NC}"
+            echo -e "${RED}This project recommends Python 3.11${NC}"
             exit 1
         fi
     fi
 else
-    echo "Python 3.8 is not installed."
+    echo "Python 3.11 is not installed."
     if [ "$IS_DEBIAN_BASED" = true ]; then
-        echo "Installing Python 3.8..."
+        echo "Installing Python 3.11..."
         sudo apt-get update
         sudo apt-get install -y software-properties-common
         sudo add-apt-repository -y ppa:deadsnakes/ppa
         sudo apt-get update
-        sudo apt-get install -y python3.8 python3.8-venv python3.8-dev
-        PYTHON_CMD=python3.8
+        sudo apt-get install -y python3.11 python3.11-venv python3.11-dev
+        PYTHON_CMD=python3.11
     else
-        echo -e "${RED}Please install Python 3.8 manually and run this script again.${NC}"
+        echo -e "${RED}Please install Python 3.11 manually and run this script again.${NC}"
         exit 1
     fi
 fi
 
-# Check for pip for Python 3.8
+# Check for pip for Python 3.11
 if ! $PYTHON_CMD -m pip --version >/dev/null 2>&1; then
-    echo "pip for Python 3.8 is not installed."
+    echo "pip for Python 3.11 is not installed."
     if [ "$IS_DEBIAN_BASED" = true ]; then
-        echo "Installing pip for Python 3.8..."
+        echo "Installing pip for Python 3.11..."
         curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
         sudo $PYTHON_CMD get-pip.py
         rm get-pip.py
     else
-        echo -e "${RED}Please install pip for Python 3.8 manually and run this script again.${NC}"
+        echo -e "${RED}Please install pip for Python 3.11 manually and run this script again.${NC}"
         exit 1
     fi
 fi
 
-# Remove existing venv if it exists (to ensure we use Python 3.8)
+# Remove existing venv if it exists (to ensure we use Python 3.11)
 if [ -d "venv" ]; then
-    echo -e "${YELLOW}Removing existing virtual environment to recreate with Python 3.8...${NC}"
+    echo -e "${YELLOW}Removing existing virtual environment to recreate with Python 3.11...${NC}"
     rm -rf venv
 fi
 
-# Create virtual environment with Python 3.8
-echo "Creating virtual environment with Python 3.8..."
+# Create virtual environment with Python 3.11
+echo "Creating virtual environment with Python 3.11..."
 $PYTHON_CMD -m venv venv
 
 # Activate virtual environment

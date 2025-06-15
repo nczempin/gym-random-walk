@@ -8,14 +8,14 @@ This is a minimal custom environment for OpenAI Gym implementing a one-dimension
 
 ## Requirements
 
-- Python 3.8-3.11 (tested with 3.8, 3.9, 3.10, 3.11)
+- Python 3.8-3.11 (recommended: 3.11, tested with 3.8, 3.9, 3.10, 3.11)
 - Dependencies: gym==0.7.4, numpy==1.22.0, pytest==7.4.4
 
 ## Commands
 
 ### Setup and Installation
 ```bash
-# Run the setup script (installs Python 3.6 if needed on Ubuntu)
+# Run the setup script (installs Python 3.11 if needed on Ubuntu)
 bash scripts/setup.sh
 
 # Or manually:

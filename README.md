@@ -19,7 +19,7 @@ This project uses older versions of dependencies to maintain compatibility with 
 
 ### Quick Setup (Ubuntu/Debian)
 
-Run the setup script which will install Python 3.8 if needed:
+Run the setup script which will install Python 3.11 if needed:
 
 ```bash
 bash scripts/setup.sh
@@ -27,10 +27,10 @@ bash scripts/setup.sh
 
 ### Manual Installation
 
-1. Ensure you have Python 3.8 installed
+1. Ensure you have Python 3.11 installed (3.8-3.11 are all supported)
 2. Create a virtual environment:
    ```bash
-   python3.8 -m venv venv
+   python3.11 -m venv venv
    source venv/bin/activate
    ```
 3. Install dependencies:
