@@ -62,4 +62,5 @@ The `RandomWalkEnv` class implements:
 ## Testing Approach
 - Uses pytest framework
 - Tests cover environment initialization, step mechanics, terminal conditions, and reward structure
+- Includes test for README example code to ensure documentation stays accurate
 - Run `scripts/run.sh` before committing to ensure linting and tests pass
