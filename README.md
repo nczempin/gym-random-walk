@@ -8,10 +8,11 @@ You can move left or right by selecting a discrete action. Reaching the rightmos
 
 ## Installation
 
-```bash
-pip install -e .
-```
+Install the dependencies using pip:
 
+```bash
+pip install -r requirements.txt
+=======
 ## Example
 
 ```python
