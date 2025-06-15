@@ -8,8 +8,8 @@ This is a minimal custom environment for OpenAI Gym implementing a one-dimension
 
 ## Requirements
 
-- Python 3.6 (required for compatibility with gym 0.7.4)
-- Dependencies: gym==0.7.4, numpy==1.12.1, pytest
+- Python 3.7 (recommended for compatibility with gym 0.7.4)
+- Dependencies: gym==0.7.4, numpy==1.16.6, pytest
 
 ## Commands
 

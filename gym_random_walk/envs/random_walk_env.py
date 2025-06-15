@@ -1,13 +1,14 @@
 import gym
 from gym import spaces
 import numpy as np
+from typing import Union, Optional, Dict
 
 class RandomWalkEnv(gym.Env):
     """Simple random walk environment."""
 
     metadata = {"render.modes": ["human"]}
 
-    def __init__(self, size: int = 6, debug: bool = False) -> None:
+    def __init__(self, size=6, debug=False):
         super().__init__()
         self.size = size
         self.debug = debug
@@ -29,18 +30,21 @@ class RandomWalkEnv(gym.Env):
             done = True
         if self.debug:
             print("current state:", self.state)
+        # Return the old Gym API format (3 values)
         return np.array(self.state), reward, done, {}
 
-    def reset(self, *, seed: int | None = None, options: dict | None = None):
-        super().reset(seed=seed)
+    def reset(self, seed=None, options=None):
+        # For gym 0.7.4 compatibility, reset doesn't call super().reset()
         if self.debug:
             print("#self.size:", self.size)
         self.state = np.random.randint(1, self.size)
         if self.debug:
             print("starting:", self.state)
-        return np.array(self.state), {}
+        return np.array(self.state)
 
-    def render(self, mode: str = "human"):
+    def render(self, mode="human", close=False):
+        if close:
+            return
         if not self.debug:
             return
         print("current state:", self.state)

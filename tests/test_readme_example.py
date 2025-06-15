@@ -8,7 +8,7 @@ _ = gym_random_walk  # ensure environment is registered
 def test_readme_example_runs():
     """Test that the example code from README.md runs without errors."""
     env = gym.make("random_walk-v0")
-    state, _ = env.reset()
+    state = env.reset()
     done = False
     
     # Run for a maximum of 100 steps to ensure test doesn't run forever
@@ -41,7 +41,7 @@ def test_readme_example_multiple_episodes():
     num_episodes = 10
     
     for _ in range(num_episodes):
-        state, _ = env.reset()
+        state = env.reset()
         done = False
         episode_reward = 0
         steps = 0

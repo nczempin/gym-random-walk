@@ -20,7 +20,7 @@ import gym
 import gym_random_walk
 
 env = gym.make("random_walk-v0")
-state, _ = env.reset()
+state = env.reset()
 done = False
 while not done:
     state, reward, done, _ = env.step(env.action_space.sample())
