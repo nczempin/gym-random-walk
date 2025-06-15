@@ -6,13 +6,38 @@ This environment implements a one-dimensional random walk. The states are `0, 1,
 
 You can move left or right by selecting a discrete action. Reaching the rightmost terminal yields a reward of `+1` while reaching the leftmost terminal gives a reward of `0`.
 
+## Requirements
+
+- **Python 3.7** (tested with 3.7.17)
+- **OpenAI Gym 0.7.4** (original version from 2017)
+- **NumPy 1.16.6** (compatible with Python 3.7)
+- **pytest 7.4.4** (for running tests)
+
+This project uses older versions of dependencies to maintain compatibility with the original codebase from 2017. The pinned versions are specified in `requirements.txt`.
+
 ## Installation
 
-Install the dependencies using pip:
+### Quick Setup (Ubuntu/Debian)
+
+Run the setup script which will install Python 3.7 if needed:
 
 ```bash
-pip install -r requirements.txt
-=======
+bash scripts/setup.sh
+```
+
+### Manual Installation
+
+1. Ensure you have Python 3.7 installed
+2. Create a virtual environment:
+   ```bash
+   python3.7 -m venv venv
+   source venv/bin/activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   pip install -e .
+   ```
 ## Example
 
 ```python
