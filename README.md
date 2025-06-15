@@ -8,9 +8,9 @@ You can move left or right by selecting a discrete action. Reaching the rightmos
 
 ## Requirements
 
-- **Python 3.7** (tested with 3.7.17)
+- **Python 3.8** (required for numpy 1.22.0)
 - **OpenAI Gym 0.7.4** (original version from 2017)
-- **NumPy 1.19.0** (minimum version to address security vulnerabilities)
+- **NumPy 1.22.0** (minimum version to address security vulnerabilities)
 - **pytest 7.4.4** (for running tests)
 
 This project uses older versions of dependencies to maintain compatibility with the original codebase from 2017. The pinned versions are specified in `requirements.txt`.
@@ -19,7 +19,7 @@ This project uses older versions of dependencies to maintain compatibility with 
 
 ### Quick Setup (Ubuntu/Debian)
 
-Run the setup script which will install Python 3.7 if needed:
+Run the setup script which will install Python 3.8 if needed:
 
 ```bash
 bash scripts/setup.sh
@@ -27,10 +27,10 @@ bash scripts/setup.sh
 
 ### Manual Installation
 
-1. Ensure you have Python 3.7 installed
+1. Ensure you have Python 3.8 installed
 2. Create a virtual environment:
    ```bash
-   python3.7 -m venv venv
+   python3.8 -m venv venv
    source venv/bin/activate
    ```
 3. Install dependencies:

@@ -8,8 +8,8 @@ This is a minimal custom environment for OpenAI Gym implementing a one-dimension
 
 ## Requirements
 
-- Python 3.7 (recommended for compatibility with gym 0.7.4)
-- Dependencies: gym==0.7.4, numpy==1.19.0, pytest==7.4.4
+- Python 3.8 (required for numpy 1.22.0 security updates)
+- Dependencies: gym==0.7.4, numpy==1.22.0, pytest==7.4.4
 
 ## Commands
 
@@ -73,3 +73,8 @@ The `RandomWalkEnv` class implements:
 - Tests cover environment initialization, step mechanics, terminal conditions, and reward structure
 - Includes test for README example code to ensure documentation stays accurate
 - Run `scripts/run.sh` before committing to ensure linting and tests pass
+
+## Version Management
+- All version numbers are centralized in `gym_random_walk/_version.py`
+- To update requirements.txt after changing versions: `python scripts/update_requirements.py`
+- This ensures consistency across setup.py, requirements.txt, and documentation
