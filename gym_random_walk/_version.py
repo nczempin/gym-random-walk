@@ -1,6 +1,6 @@
 """Version information for gym-random-walk package."""
 
-__version__ = '1.0.0'
+__version__ = '0.2.0'
 
 # Dependency versions
 PYTHON_VERSION = '3.11'
