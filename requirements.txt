@@ -1,3 +1,3 @@
-gym
+gym==0.7.4
 pytest
-numpy
+numpy==1.12.1

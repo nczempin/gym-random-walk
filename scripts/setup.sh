@@ -4,6 +4,12 @@ set -euo pipefail
 # Navigate to the project root directory
 cd "$(dirname "$0")/.."
 
+# Colors for output
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -21,47 +27,75 @@ else
     IS_DEBIAN_BASED=false
 fi
 
-# Check and install Python3 if not present
-if ! command_exists python3; then
-    echo "Python3 not found. Installing Python3..."
-    if [ "$IS_DEBIAN_BASED" = true ]; then
-        sudo apt-get update
-        sudo apt-get install -y python3
+# Check for Python 3.6
+echo "Checking for Python 3.6..."
+if command_exists python3.6; then
+    PYTHON_CMD=python3.6
+    echo -e "${GREEN}Found Python 3.6${NC}"
+elif command_exists python3; then
+    # Check if it's 3.6.x
+    PYTHON_VERSION=$(python3 --version 2>&1 | awk '{print $2}')
+    if [[ $PYTHON_VERSION == 3.6.* ]]; then
+        PYTHON_CMD=python3
+        echo -e "${GREEN}Found Python $PYTHON_VERSION${NC}"
     else
-        echo "Please install Python3 manually for your system"
-        exit 1
+        echo -e "${YELLOW}Python 3 found but version is $PYTHON_VERSION${NC}"
+        echo -e "${YELLOW}This project was designed for Python 3.6 (gym 0.7.4 era)${NC}"
+        
+        if [ "$IS_DEBIAN_BASED" = true ]; then
+            echo "Installing Python 3.6..."
+            sudo apt-get update
+            # Add deadsnakes PPA for older Python versions
+            sudo apt-get install -y software-properties-common
+            sudo add-apt-repository -y ppa:deadsnakes/ppa
+            sudo apt-get update
+            sudo apt-get install -y python3.6 python3.6-venv python3.6-dev
+            PYTHON_CMD=python3.6
+        else
+            echo -e "${RED}Please install Python 3.6 manually and run this script again.${NC}"
+            echo -e "${RED}This project requires Python 3.6 for compatibility with gym 0.7.4${NC}"
+            exit 1
+        fi
     fi
-fi
-
-# Check and install pip if not present
-if ! command_exists pip3 && ! command_exists pip; then
-    echo "pip not found. Installing pip..."
-    if [ "$IS_DEBIAN_BASED" = true ]; then
-        sudo apt-get install -y python3-pip
-    else
-        echo "Please install pip manually for your system"
-        exit 1
-    fi
-fi
-
-# Check if python3-venv is installed (required for creating virtual environments)
-if ! python3 -m venv --help &> /dev/null; then
-    echo "python3-venv not found. Installing python3-venv..."
-    if [ "$IS_DEBIAN_BASED" = true ]; then
-        sudo apt-get install -y python3-venv
-    else
-        echo "Please install python3-venv manually for your system"
-        exit 1
-    fi
-fi
-
-# Create virtual environment if it doesn't exist
-if [ ! -d "venv" ]; then
-    echo "Creating virtual environment..."
-    python3 -m venv venv
 else
-    echo "Virtual environment already exists"
+    echo "Python 3.6 is not installed."
+    if [ "$IS_DEBIAN_BASED" = true ]; then
+        echo "Installing Python 3.6..."
+        sudo apt-get update
+        sudo apt-get install -y software-properties-common
+        sudo add-apt-repository -y ppa:deadsnakes/ppa
+        sudo apt-get update
+        sudo apt-get install -y python3.6 python3.6-venv python3.6-dev
+        PYTHON_CMD=python3.6
+    else
+        echo -e "${RED}Please install Python 3.6 manually and run this script again.${NC}"
+        exit 1
+    fi
 fi
+
+# Check for pip for Python 3.6
+if ! $PYTHON_CMD -m pip --version >/dev/null 2>&1; then
+    echo "pip for Python 3.6 is not installed."
+    if [ "$IS_DEBIAN_BASED" = true ]; then
+        echo "Installing pip for Python 3.6..."
+        curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o get-pip.py
+        sudo $PYTHON_CMD get-pip.py
+        rm get-pip.py
+    else
+        echo -e "${RED}Please install pip for Python 3.6 manually and run this script again.${NC}"
+        exit 1
+    fi
+fi
+
+# Remove existing venv if it exists (to ensure we use Python 3.6)
+if [ -d "venv" ]; then
+    echo -e "${YELLOW}Removing existing virtual environment to recreate with Python 3.6...${NC}"
+    rm -rf venv
+fi
+
+# Create virtual environment with Python 3.6
+echo "Creating virtual environment with Python 3.6..."
+$PYTHON_CMD -m venv venv
 
 # Activate virtual environment
 echo "Activating virtual environment..."
@@ -83,5 +117,7 @@ pip install ruff pytest build
 echo "Installing gym-random-walk in development mode..."
 pip install -e .
 
-echo "Setup complete! Virtual environment is activated."
-echo "To activate the virtual environment manually, run: source venv/bin/activate"
+echo -e "${GREEN}Setup complete!${NC}"
+echo -e "${GREEN}Python version in venv: $(python --version)${NC}"
+echo -e "${GREEN}To activate the virtual environment, run: source venv/bin/activate${NC}"
+echo -e "${GREEN}To deactivate it later, run: deactivate${NC}"
