@@ -3,7 +3,7 @@
 __version__ = '0.1.1'
 
 # Dependency versions
-PYTHON_VERSION = '3.8'
+PYTHON_VERSION = '3.11'
 NUMPY_VERSION = '1.22.0'
 GYM_VERSION = '0.7.4'
 PYTEST_VERSION = '7.4.4'
