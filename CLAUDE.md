@@ -78,3 +78,34 @@ The `RandomWalkEnv` class implements:
 - All version numbers are centralized in `gym_random_walk/_version.py`
 - To update requirements.txt after changing versions: `python scripts/update_requirements.py`
 - This ensures consistency across setup.py, requirements.txt, and documentation
+
+## Development Conventions and Preferences
+
+### Code Style
+- **Avoid code duplication**: Use variables and constants for repeated values
+- **DRY principle**: Factor out common code patterns (e.g., use PYTHON_VERSION variable in scripts)
+- **No unnecessary comments**: Don't add comments unless specifically requested
+- **Run linting before commits**: Always run `bash scripts/run.sh` which includes ruff linting
+
+### Git and GitHub Workflow
+- **Default branch**: The default branch is `dev` (not `main` or `master`)
+- **Create PRs against dev**: Always create pull requests against the `dev` branch
+- **Branch naming**: Follow pattern `feature/descriptive-name` (e.g., `feature/gymnasium-migration`)
+- **Commit messages**: Include clear description of changes, use conventional commit style when applicable
+- **Close related issues**: When PRs resolve issues, close them with explanatory comments
+
+### Python Version Strategy
+- **Python 3.12 is the default**: Used in setup scripts and development
+- **Support range**: Maintain compatibility with Python 3.9-3.12
+- **Testing**: Test across all supported versions via CI matrix
+- **Documentation**: Always specify that 3.12 is recommended while others are supported
+
+### Pull Request Best Practices
+- **Comprehensive PR descriptions**: Include summary, changes, test plan, and resolved issues
+- **Address review comments promptly**: Fix issues raised in PR reviews before merging
+- **Update related issues**: Comment on strategic/tracking issues when making progress
+
+### Documentation Updates
+- **README clarity**: Include beginner-friendly explanations for those new to RL/Gym
+- **Keep CLAUDE.md current**: Update this file when new conventions are established
+- **Explain the "why"**: When adding features or making changes, explain the purpose
