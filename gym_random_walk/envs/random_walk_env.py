@@ -60,6 +60,5 @@ class RandomWalkEnv(gym.Env):
         return self.state, {}
 
     def render(self):
-        if not self.debug:
-            return
-        print("current state:", self.state)
+        if self.render_mode == "human" or self.debug:
+            print("current state:", self.state)
