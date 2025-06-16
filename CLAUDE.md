@@ -8,14 +8,14 @@ This is a minimal custom environment for Gymnasium (formerly OpenAI Gym) impleme
 
 ## Requirements
 
-- Python 3.8-3.11 (recommended: 3.11, tested with 3.8, 3.9, 3.10, 3.11)
-- Dependencies: gymnasium==1.0.0, numpy==1.22.0, pytest==7.4.4
+- Python 3.9-3.12 (recommended: 3.12, tested with 3.9, 3.10, 3.11, 3.12)
+- Dependencies: gymnasium==1.0.0, numpy==1.26.4, pytest==7.4.4
 
 ## Commands
 
 ### Setup and Installation
 ```bash
-# Run the setup script (installs Python 3.11 if needed on Ubuntu)
+# Run the setup script (installs Python 3.12 if needed on Ubuntu)
 bash scripts/setup.sh
 
 # Or manually:
