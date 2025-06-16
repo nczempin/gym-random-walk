@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a minimal custom environment for OpenAI Gym implementing a one-dimensional random walk. The environment features configurable state space with terminal states at both ends, binary actions (left/right), and simple reward structure.
+This is a minimal custom environment for Gymnasium (formerly OpenAI Gym) implementing a one-dimensional random walk. The environment features configurable state space with terminal states at both ends, binary actions (left/right), and simple reward structure.
 
 ## Requirements
 
 - Python 3.8-3.11 (recommended: 3.11, tested with 3.8, 3.9, 3.10, 3.11)
-- Dependencies: gym==0.7.4, numpy==1.22.0, pytest==7.4.4
+- Dependencies: gymnasium==1.0.0, numpy==1.22.0, pytest==7.4.4
 
 ## Commands
 
