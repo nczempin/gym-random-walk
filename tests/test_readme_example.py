@@ -21,11 +21,11 @@ def test_readme_example_runs():
         steps += 1
         
         # Verify state is within valid range
-        assert 0 <= state <= env.size
+        assert 0 <= state <= env.unwrapped.size
         
         # Verify reward is correct based on terminal state
         if done:
-            if state == env.size:
+            if state == env.unwrapped.size:
                 assert reward == 1
             elif state == 0:
                 assert reward == 0

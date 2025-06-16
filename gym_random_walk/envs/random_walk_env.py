@@ -17,7 +17,7 @@ class RandomWalkEnv(gym.Env):
         self.observation_space = spaces.Discrete(self.size + 1)
         self.state = None
 
-    def step(self, action) -> Tuple[np.ndarray, float, bool, bool, Dict[str, Any]]:
+    def step(self, action) -> Tuple[int, float, bool, bool, Dict[str, Any]]:
         reward = 0
         terminated = False
         truncated = False
@@ -41,9 +41,9 @@ class RandomWalkEnv(gym.Env):
             self.render()
             
         # Return the new Gymnasium API format (5 values)
-        return np.array(self.state), reward, terminated, truncated, {}
+        return self.state, reward, terminated, truncated, {}
 
-    def reset(self, seed: Optional[int] = None, options: Optional[Dict] = None) -> Tuple[np.ndarray, Dict]:
+    def reset(self, seed: Optional[int] = None, options: Optional[Dict] = None) -> Tuple[int, Dict]:
         # Properly handle seeding in Gymnasium
         super().reset(seed=seed)
         
@@ -57,7 +57,7 @@ class RandomWalkEnv(gym.Env):
             print("starting:", self.state)
             
         # Return observation and info dict
-        return np.array(self.state), {}
+        return self.state, {}
 
     def render(self):
         if not self.debug:
