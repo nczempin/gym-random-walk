@@ -8,9 +8,9 @@ You can move left or right by selecting a discrete action. Reaching the rightmos
 
 ## Requirements
 
-- **Python 3.9-3.12** (tested with 3.9, 3.10, 3.11, 3.12)
+- **Python 3.9-3.12** (recommended: 3.12, tested with 3.9, 3.10, 3.11, 3.12)
 - **Gymnasium 1.0.0** (modern fork of OpenAI Gym)
-- **NumPy 1.26.0** (minimum version for Python 3.12 support)
+- **NumPy 1.26.4** (minimum version for Python 3.12 support)
 - **pytest 7.4.4** (for running tests)
 
 This project has been updated to use Gymnasium, the maintained fork of OpenAI Gym. The pinned versions are specified in `requirements.txt`.
@@ -19,7 +19,7 @@ This project has been updated to use Gymnasium, the maintained fork of OpenAI Gy
 
 ### Quick Setup (Ubuntu/Debian)
 
-Run the setup script which will install Python 3.11 if needed:
+Run the setup script which will install Python 3.12 if needed:
 
 ```bash
 bash scripts/setup.sh
@@ -27,10 +27,10 @@ bash scripts/setup.sh
 
 ### Manual Installation
 
-1. Ensure you have Python 3.11 installed (3.9-3.12 are all supported)
+1. Ensure you have Python 3.12 installed (3.9-3.12 are all supported)
 2. Create a virtual environment:
    ```bash
-   python3.11 -m venv venv
+   python3.12 -m venv venv
    source venv/bin/activate
    ```
 3. Install dependencies:
