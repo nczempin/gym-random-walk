@@ -8,12 +8,12 @@ import numpy as np
 import subprocess
 import sys
 import os
+import gymnasium as gym
 
 # Add parent directory to path to import the example
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'examples'))
 
-from q_learning_agent import train_q_learning, epsilon_greedy_action, print_policy
-import gymnasium as gym
+from q_learning_agent import train_q_learning, epsilon_greedy_action, print_policy  # noqa: E402
 
 
 def test_epsilon_greedy_action():

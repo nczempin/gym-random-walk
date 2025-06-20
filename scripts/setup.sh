@@ -14,6 +14,9 @@ RED='\033[0;31m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
+# Initialize OS detection variable (required for set -u)
+IS_DEBIAN_BASED=false
+
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1

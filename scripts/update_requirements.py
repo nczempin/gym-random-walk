@@ -6,7 +6,8 @@ import os
 
 # Add gym_random_walk directory to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'gym_random_walk'))
-from _version import GYMNASIUM_VERSION, PYTEST_VERSION, NUMPY_VERSION, MATPLOTLIB_VERSION, RUFF_VERSION
+
+from _version import GYMNASIUM_VERSION, PYTEST_VERSION, NUMPY_VERSION, MATPLOTLIB_VERSION, RUFF_VERSION  # noqa: E402
 
 # Generate requirements.txt content
 requirements = f"""gymnasium=={GYMNASIUM_VERSION}
