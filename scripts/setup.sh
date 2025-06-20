@@ -109,6 +109,12 @@ source venv/bin/activate
 echo "Upgrading pip..."
 pip install --upgrade pip
 
+# Install system dependencies for matplotlib GUI support (if on Debian-based systems)
+if [ "$IS_DEBIAN_BASED" = true ]; then
+    echo "Installing system dependencies for matplotlib GUI support..."
+    sudo apt-get install -y python3-tk
+fi
+
 # Install dependencies from requirements.txt
 echo "Installing dependencies from requirements.txt..."
 pip install -r requirements.txt
