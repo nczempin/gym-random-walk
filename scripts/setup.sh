@@ -113,9 +113,9 @@ pip install --upgrade pip
 echo "Installing dependencies from requirements.txt..."
 pip install -r requirements.txt
 
-# Install development dependencies
-echo "Installing development dependencies..."
-pip install ruff pytest build
+# Install additional development dependencies not in requirements.txt
+echo "Installing additional development dependencies..."
+pip install build
 
 # Install the package in development mode
 echo "Installing gym-random-walk in development mode..."

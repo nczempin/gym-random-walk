@@ -64,7 +64,9 @@ bash scripts/setup.sh
    pip install -r requirements.txt
    pip install -e .
    ```
-## Example
+## Examples
+
+### Basic Usage
 
 ```python
 import gymnasium as gym
@@ -77,6 +79,33 @@ while not done:
     state, reward, terminated, truncated, info = env.step(env.action_space.sample())
     done = terminated or truncated
 ```
+
+### Training a Q-Learning Agent
+
+We provide a complete Q-learning implementation that learns to solve the random walk environment:
+
+```bash
+# Train with default parameters (500 episodes)
+python examples/q_learning_agent.py
+
+# Train with custom parameters
+python examples/q_learning_agent.py --episodes 1000 --lr 0.2 --gamma 0.9
+
+# Train without plotting (if matplotlib not installed)
+python examples/q_learning_agent.py --no-plot
+
+# Save the learning curve plot
+python examples/q_learning_agent.py --save-plot learning_curve.png
+```
+
+The Q-learning example demonstrates:
+- Tabular Q-learning algorithm implementation
+- Epsilon-greedy exploration strategy
+- Learning curve visualization (requires matplotlib: `pip install matplotlib`)
+- Hyperparameter configuration
+- Testing the trained agent's performance
+
+After training, the agent learns the optimal policy: always move right (action 1) to reach the goal state and earn the +1 reward.
 
 ## Development
 
