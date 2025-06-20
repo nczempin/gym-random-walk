@@ -1,8 +1,9 @@
-import numpy as np
 import pytest
 
 gym = pytest.importorskip("gymnasium")
-import gym_random_walk
+
+# Import gym_random_walk to register the environment
+import gym_random_walk  # noqa: E402, F401
 
 
 def test_random_walk_step():

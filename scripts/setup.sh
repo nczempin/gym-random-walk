@@ -109,13 +109,19 @@ source venv/bin/activate
 echo "Upgrading pip..."
 pip install --upgrade pip
 
+# Install system dependencies for matplotlib GUI support (if on Debian-based systems)
+if [ "$IS_DEBIAN_BASED" = true ]; then
+    echo "Installing system dependencies for matplotlib GUI support..."
+    sudo apt-get install -y python3-tk
+fi
+
 # Install dependencies from requirements.txt
 echo "Installing dependencies from requirements.txt..."
 pip install -r requirements.txt
 
-# Install development dependencies
-echo "Installing development dependencies..."
-pip install ruff pytest build
+# Install additional development dependencies not in requirements.txt
+echo "Installing additional development dependencies..."
+pip install build
 
 # Install the package in development mode
 echo "Installing gym-random-walk in development mode..."
